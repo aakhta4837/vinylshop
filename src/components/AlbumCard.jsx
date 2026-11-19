@@ -30,7 +30,7 @@ const AlbumCard = ({ album, onAddToCart }) => {
         <button
           className="btn btn-secondary btn-block"
           type="button"
-          onClick={() => onAddToCart(album.id)}
+          onClick={() => onAddToCart(album)}
         >
           Add To Cart
         </button>
