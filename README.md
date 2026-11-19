@@ -1,16 +1,54 @@
-# React + Vite
+# Project Setup & Execution Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prerequistes:
+Node.js: Version 21 or higher (Node.js 22 recommended).
+npm: Node Package Manager, included with Node.js.
+Git: Required to clone the project repository.
+Code Editor: Visual Studio Code or another preferred editor.
+Web Browser: Google Chrome, Firefox, Safari, or another modern browser.
 
-Currently, two official plugins are available:
+ # Installation Instructions:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Step 1: Clone the GitHub repository
 
-## React Compiler
+Open a terminal and run the following commands:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+git clone <your-github-repository-url>
+cd vinylvault
 
-## Expanding the ESLint configuration
+Replace the placeholder with the actual public GitHub repository URL.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Step 2: Install project dependencies
+
+Run the following command from the root directory:
+
+npm install
+
+This installs the required packages listed in package.json, including React, React DOM, and Vite
+
+If React Router DOM is not already installed, run:
+
+npm install react-router-dom
+
+Running the Application
+
+# Step 3: Start the development server
+
+From the root project directory, run:
+
+npm run dev
+
+Vite will start the local development server and display a URL similar to:
+
+Local: http://localhost:5173/
+
+# Step 4: Verify the application in a browser
+
+Open a web browser and navigate to:
+
+http://localhost:5173/
+
+To stop the development server, press Ctrl + C in the terminal.
+
+# Project Directory Structure:
+The root directory has the README.md, package.json, index.html, and the vite configuration file. Within src there is the components directory that holds React components like Navbar, AlbumCard, and CartDrawer, while the pages directory contains CatalogPage, CheckoutPage, and ProductDetailPage. The data directory holds the album.js dataset, and App.jsx manages shared cart state and routing. Main.jsx initializes the react application, and styles.css defines the ui styling.
