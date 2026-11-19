@@ -12,14 +12,14 @@ const AlbumCard = ({ album, onAddToCart }) => {
         <img
           className="album-image"
           src={album.image}
-          alt={album.name}
+          alt={album.title}
           loading="lazy"
         />
       </Link>
       <div className="album-body">
-        <span className="album-category">{album.category}</span>
+        <span className="album-genre">{album.genre}</span>
         <h3 className="album-title">
-          <Link to={`/album/${album.id}`}>{album.name}</Link>
+          <Link to={`/album/${album.id}`}>{album.title}</Link>
         </h3>
         <p className="album-price">
           $
