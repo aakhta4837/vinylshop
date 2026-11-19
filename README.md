@@ -52,3 +52,88 @@ To stop the development server, press Ctrl + C in the terminal.
 
 # Project Directory Structure:
 The root directory has the README.md, package.json, index.html, and the vite configuration file. Within src there is the components directory that holds React components like Navbar, AlbumCard, and CartDrawer, while the pages directory contains CatalogPage, CheckoutPage, and ProductDetailPage. The data directory holds the album.js dataset, and App.jsx manages shared cart state and routing. Main.jsx initializes the react application, and styles.css defines the ui styling.
+
+
+
+
+# 2. React Component Hierarchy 
+
+- **`<App />`** — `src/App.jsx`
+  - **State Ownership:**
+    - `cart [Array]` = Stores albums added to the cart
+    - `isCartOpen [Boolean]` = Controls if cart drawer is visible or not
+  - **Callback Handlers:**
+    - `handleAddToCart(product, quantity = 1)` = Adds albums to cart or increases quantity
+    - `handleUpdateCartQuantity(albumId, delta)` = Increases/decreases cart quantity
+    - `handleRemoveFromCart(albumId)` = Removes album from cart
+    - `handleClearCart()` = Clears the cart after checkout
+
+  - **`<Navbar />`** — `src/components/Navbar.jsx`
+    - **Props:**
+      - `cartCount [Number]` = Total quantity of albums in cart
+      - `onOpenCart [Function]` = Opens the CartDrawer
+    - **Events:**
+      - `onClick` → `onOpenCart()`
+      - `<Link to="/">` = Navigate to catalog page
+
+  - **`<Routes>`** — React Router
+    - **Route: `/` — `<CatalogPage />`** — `src/pages/CatalogPage.jsx`
+      - **State:**
+        - `selectedGenre [String]` = Current selected genre
+      - **Props:**
+        - `albums [Array]` = Vinyl record dataset
+        - `onAddToCart [Function]`
+      - **Events:**
+        - `onClick` → `setSelectedGenre(genre)`
+      - **`<AlbumCard />`** — `src/components/AlbumCard.jsx`
+        - **Props:**
+          - `album [Object]` = Album information
+          - `onAddToCart [Function]` = Callback from App, passed through CatalogPage
+        - **Events:**
+          - `onClick` → `onAddToCart(album)`
+          - `<Link to="/album/:albumId">` = Navigates to album detail page (using actual album ID)
+
+    - **Route: `/album/:albumId` — `<AlbumDetailPage />`** — `src/pages/AlbumDetailPage.jsx`
+      - **State:**
+        - `qty [Number]` = Selected album quantity
+      - **Props:**
+        - `albums [Array]` = Vinyl record dataset
+        - `onAddToCart [Function]` = Callback from App
+      - **Events:**
+        - `onChange` → `setQty(...)`
+        - `onClick` → `onAddToCart(...)`
+        - `<Link to="/">` = Return to catalog
+
+    - **Route: `/checkout` — `<CheckoutPage />`** — `src/pages/CheckoutPage.jsx`
+      - **State:**
+        - `isSubmitted [Boolean]` = Tracks order submission
+        - `formData [Object]` = Stores checkout form values
+          - `fullName [String]`
+          - `email [String]`
+          - `shippingAddress [String]`
+          - `city [String]`
+          - `zipCode [String]`
+          - `cardNumber [String]`
+          - `cvv [String]`
+      - **Props:**
+        - `cart [Array]` = Albums purchased
+        - `onClearCart [Function]` = Clears cart
+      - **Events:**
+        - `onChange` → `handleChange(event)`
+        - `onSubmit` → `handleSubmit(event)`
+        - `handleSubmit()` → `onClearCart()`
+
+  - **`<CartDrawer />`** — `src/components/CartDrawer.jsx`
+    - **Props:**
+      - `isOpen [Boolean]` = Drawer visibility
+      - `cart [Array]` = Selected albums and quantities
+      - `onClose [Function]` = Closes the drawer
+      - `onUpdateQuantity [Function]` = Updates quantities
+      - `onRemove [Function]` = Removes albums
+    - **Events:**
+      - `onClick` → `onClose()`
+      - `onClick` → `onUpdateQuantity(item.id, -1)`
+      - `onClick` → `onUpdateQuantity(item.id, 1)`
+      - `onClick` → `onRemove(item.id)`
+      - `onClick` → `handleProceedToCheckout()`
+
