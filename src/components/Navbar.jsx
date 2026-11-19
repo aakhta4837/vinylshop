@@ -17,7 +17,7 @@ const Navbar = ({ cartCount, onOpenCart }) => {
             type="button"
             className="btn-cart-badge"
             onClick={onOpenCart}
-            aria-label={"Shipping with ${cartCount} items"}
+            aria-label={`Shipping with ${cartCount} items`}
           >
             🛒{" "}
             {cartCount > 0 && <span className="badge-pill">{cartCount}</span>}

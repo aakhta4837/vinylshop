@@ -8,7 +8,7 @@ const AlbumCard = ({ album, onAddToCart }) => {
   if (!album) return null;
   return (
     <article className="album-card">
-      <Link className="album-img-link" to={`/product/${album.id}`}>
+      <Link className="album-img-link" to={`/album/${album.id}`}>
         <img
           className="album-image"
           src={album.image}
@@ -19,7 +19,7 @@ const AlbumCard = ({ album, onAddToCart }) => {
       <div className="album-body">
         <span className="album-category">{album.category}</span>
         <h3 className="album-title">
-          <Link to={`/product/${album.id}`}>{album.name}</Link>
+          <Link to={`/album/${album.id}`}>{album.name}</Link>
         </h3>
         <p className="album-price">
           $

@@ -11,14 +11,14 @@ function CatalogPage({ albums, onAddToCart }) {
   const filteredAlbums =
     selectedGenre === "All"
       ? validAlbums
-      : validAlbums.filter((a) => a.category === selectedGenre);
+      : validAlbums.filter((a) => a.genre === selectedGenre);
 
   return (
     <div className="catalog-container">
       <header className="catalog-hero">
-        <h1> Handcrafted Functional Stoneware</h1>
+        <h1> Find your next favorite record!</h1>
         <p>
-          Sustainable ceramics shaped by hand for intentional daily rituals.
+          Find your aged to perfection classics on vinyl
         </p>
       </header>
       <div className="filter-bar">
