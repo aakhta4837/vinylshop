@@ -164,7 +164,6 @@ const CheckoutPage = ({ cart, onClearCart }) => {
           <button type="submit" className="btn btn-primary btn-block btn-lg">
             Complete Order (${total.toFixed(2)})
           </button>
-          {/* CHECK: handleSubmit and handleChange confusion */}
         </form>
 
         {/* invoice section */}
